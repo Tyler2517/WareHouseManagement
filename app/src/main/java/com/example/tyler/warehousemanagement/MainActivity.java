@@ -125,7 +125,7 @@ public class MainActivity extends AppCompatActivity {
 
         @Override
         public int getCount() {
-            // Show 3 total pages.
+            // Show 5 total pages.
             return 5;
         }
 
@@ -137,11 +137,11 @@ public class MainActivity extends AppCompatActivity {
                 case 1:
                     return "Sort1";
                 case 2:
-                    return "Misc";
+                    return "Sort2";
                 case 3:
-                    return "hello";
+                    return "Sort3";
                 case 4:
-                    return "dlajf";
+                    return "Sort5";
             }
             return null;
         }
