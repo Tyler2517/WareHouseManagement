@@ -16,8 +16,10 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-
 import android.widget.TextView;
+import org.junit.Test;
+import java.util.regex.Pattern;
+
 
 public class MainActivity extends AppCompatActivity {
 
@@ -35,6 +37,7 @@ public class MainActivity extends AppCompatActivity {
      * The {@link ViewPager} that will host the section contents.
      */
     private ViewPager mViewPager;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -106,6 +109,7 @@ public class MainActivity extends AppCompatActivity {
                 case 0:
                     Tab1 tab1 = new Tab1();
                     return tab1;
+
                 case 1:
                     Tab2 tab2 = new Tab2();
                     return tab2;
@@ -141,7 +145,7 @@ public class MainActivity extends AppCompatActivity {
                 case 3:
                     return "Sort3";
                 case 4:
-                    return "Sort5";
+                    return "Sort4";
             }
             return null;
         }
