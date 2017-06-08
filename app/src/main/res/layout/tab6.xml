@@ -9,7 +9,7 @@
     tools:context="com.example.tyler.warehousemanagement.MainActivity">
 
     <ListView
-        android:id="@+id/ListView"
+        android:id="@+id/listview6"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_alignParentBottom="true"
