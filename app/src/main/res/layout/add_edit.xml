@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:weightSum="1">
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Add/Edit Item"
+        android:textSize="40dp"
+        android:textAlignment="center"/>
+
+    <EditText
+        android:layout_marginTop="25dp"
+        android:id="@+id/editName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:text="Name" />
+
+    <EditText
+        android:layout_marginTop="25dp"
+        android:id="@+id/editID"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:text="ID" />
+
+    <EditText
+        android:layout_marginTop="25dp"
+        android:id="@+id/editLoc"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:text="Location" />
+
+    <EditText
+        android:layout_marginTop="25dp"
+        android:id="@+id/editCon"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:text="Condition" />
+
+    <Button
+        android:layout_marginTop="50dp"
+        android:id="@+id/editConfirm"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Confirm"
+        android:layout_weight="0.10"
+        android:textSize="30dp"/>
+</LinearLayout>
