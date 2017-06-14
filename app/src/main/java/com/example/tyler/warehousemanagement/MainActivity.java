@@ -20,7 +20,11 @@ import android.widget.TextView;
 import org.junit.Test;
 import java.util.regex.Pattern;
 
-
+/**************************************
+ *
+ *  MAIN ACTIVITY
+ *
+ **************************************/
 public class MainActivity extends AppCompatActivity {
 
     /**
@@ -32,11 +36,14 @@ public class MainActivity extends AppCompatActivity {
      * {@link android.support.v4.app.FragmentStatePagerAdapter}.
      */
     private SectionsPagerAdapter mSectionsPagerAdapter;
+    private SectionsPagerAdapter eSectionsPagerAdapter;
 
     /**
      * The {@link ViewPager} that will host the section contents.
      */
     private ViewPager mViewPager;
+    private ViewPager eViewPager;
+
 
 
     @Override
@@ -49,33 +56,46 @@ public class MainActivity extends AppCompatActivity {
         // Create the adapter that will return a fragment for each of the three
         // primary sections of the activity.
         mSectionsPagerAdapter = new SectionsPagerAdapter(getSupportFragmentManager());
-
+       eSectionsPagerAdapter = new SectionsPagerAdapter(getSupportFragmentManager());
         // Set up the ViewPager with the sections adapter.
         mViewPager = (ViewPager) findViewById(R.id.container);
         mViewPager.setAdapter(mSectionsPagerAdapter);
 
+
+
+
         TabLayout tabLayout = (TabLayout) findViewById(R.id.tabs);
         tabLayout.setupWithViewPager(mViewPager);
+
 
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
+                eViewPager = (ViewPager) findViewById(R.id.container);
+                mViewPager.setAdapter(eSectionsPagerAdapter);
+
             }
         });
 
     }
 
-
+    /**************************************
+     *
+     *  onCreateOptionsMenu
+     *
+     **************************************/
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.menu_main, menu);
         return true;
     }
-
+    /**************************************
+     *
+     *  onOptionsItemSelected
+     *
+     **************************************/
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         // Handle action bar item clicks here. The action bar will
@@ -91,7 +111,39 @@ public class MainActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
+    /**************************************
+     *
+     *  SectionsPagerAdapter
+     *
+     **************************************/
 
+    /**
+     * A {@link FragmentPagerAdapter} that returns a fragment corresponding to
+     * one of the sections/tabs/pages.
+     */
+    public class AddEditAdapter extends FragmentPagerAdapter {
+
+        public AddEditAdapter(FragmentManager fm) {
+            super(fm);
+        }
+
+        @Override
+        public Fragment getItem(int position) {
+            AddEdit addEdit = new AddEdit();
+            return addEdit;
+        }
+
+        @Override
+        public int getCount() {
+            return 2;
+        }
+    }
+
+    /**************************************
+     *
+     *  SectionsPagerAdapter
+     *
+     **************************************/
 
     /**
      * A {@link FragmentPagerAdapter} that returns a fragment corresponding to
