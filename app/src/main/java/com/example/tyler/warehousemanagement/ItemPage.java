@@ -1,7 +1,7 @@
 package com.example.tyler.warehousemanagement;
 
 /**
- * Created by Tyler on 6/5/2017.
+ * Created by Tyler on 6/14/2017.
  */
 
 import android.os.Bundle;
@@ -10,10 +10,10 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-public class Tab6 extends Fragment {
+public class ItemPage {
 
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View rootView = inflater.inflate(R.layout.tab6, container, false);
+        View rootView = inflater.inflate(R.layout.itempage, container, false);
         return rootView;
     }}

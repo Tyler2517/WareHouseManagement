@@ -174,9 +174,6 @@ public class MainActivity extends AppCompatActivity {
                 case 4:
                     Tab5 tab5 = new Tab5();
                     return tab5;
-                case 5:
-                    Tab6 tab6 = new Tab6();
-                    return tab6;
                 default:
                     return null;
             }
@@ -185,7 +182,7 @@ public class MainActivity extends AppCompatActivity {
         @Override
         public int getCount() {
             // Show 5 total pages.
-            return 6;
+            return 5;
         }
 
         @Override
@@ -201,8 +198,6 @@ public class MainActivity extends AppCompatActivity {
                     return "Sort3";
                 case 4:
                     return "Sort4";
-                case 5:
-                    return "ItemPage";
             }
             return null;
         }
