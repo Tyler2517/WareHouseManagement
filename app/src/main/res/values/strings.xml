@@ -5,4 +5,5 @@
     <string name="app_label">Warehouse Management</string>
     <string name="search_hint">Enter an item property</string>
     <string name="search_display">Placeholder text</string>
+    <string name="search_activate">Search</string>
 </resources>
