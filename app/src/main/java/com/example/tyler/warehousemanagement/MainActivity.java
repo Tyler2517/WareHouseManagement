@@ -1,5 +1,6 @@
 package com.example.tyler.warehousemanagement;
 
+import android.app.DialogFragment;
 import android.support.design.widget.TabLayout;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -20,6 +21,11 @@ import android.widget.TextView;
 import org.junit.Test;
 import java.util.regex.Pattern;
 
+import android.os.Bundle;
+import android.support.v4.app.Fragment;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
 /**************************************
  *
  *  MAIN ACTIVITY
@@ -36,7 +42,7 @@ public class MainActivity extends AppCompatActivity {
      * {@link android.support.v4.app.FragmentStatePagerAdapter}.
      */
     private SectionsPagerAdapter mSectionsPagerAdapter;
-    private SectionsPagerAdapter eSectionsPagerAdapter;
+    private AddEditAdapter eSectionsPagerAdapter;
 
     /**
      * The {@link ViewPager} that will host the section contents.
@@ -53,15 +59,15 @@ public class MainActivity extends AppCompatActivity {
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+
         // Create the adapter that will return a fragment for each of the three
         // primary sections of the activity.
         mSectionsPagerAdapter = new SectionsPagerAdapter(getSupportFragmentManager());
-       eSectionsPagerAdapter = new SectionsPagerAdapter(getSupportFragmentManager());
+        eSectionsPagerAdapter = new AddEditAdapter(getSupportFragmentManager());
+
         // Set up the ViewPager with the sections adapter.
         mViewPager = (ViewPager) findViewById(R.id.container);
         mViewPager.setAdapter(mSectionsPagerAdapter);
-
-
 
 
         TabLayout tabLayout = (TabLayout) findViewById(R.id.tabs);
@@ -72,12 +78,12 @@ public class MainActivity extends AppCompatActivity {
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                eViewPager = (ViewPager) findViewById(R.id.container);
-                mViewPager.setAdapter(eSectionsPagerAdapter);
 
+                DialogFragment newFragment = AddEditDialog.newInstance(view.getId());
+                newFragment.setShowsDialog(true);
+                newFragment.show(getFragmentManager(), "dialog");
             }
         });
-
     }
 
     /**************************************
@@ -135,7 +141,7 @@ public class MainActivity extends AppCompatActivity {
 
         @Override
         public int getCount() {
-            return 2;
+            return 1;
         }
     }
 
