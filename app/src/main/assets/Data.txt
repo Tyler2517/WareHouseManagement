@@ -1,0 +1,16 @@
+{
+      "Warehouse" : [
+        {
+          "Name": "Deisel Motor",
+          "ID": "M2513",
+          "Condition": "Good",
+          "Location" : "Shop"
+        },
+        {
+          "Name": "Electric Motor",
+          "ID": "M2514",
+          "Condition": "Good",
+          "Location" : "Shop"
+        },
+      ]
+}
