@@ -19,6 +19,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 import org.junit.Test;
+
+import java.util.LinkedList;
 import java.util.regex.Pattern;
 
 import android.os.Bundle;
@@ -42,16 +44,15 @@ public class MainActivity extends AppCompatActivity {
      * {@link android.support.v4.app.FragmentStatePagerAdapter}.
      */
     private SectionsPagerAdapter mSectionsPagerAdapter;
-    private AddEditAdapter eSectionsPagerAdapter;
-
     /**
      * The {@link ViewPager} that will host the section contents.
      */
     private ViewPager mViewPager;
-    private ViewPager eViewPager;
-
-
-
+    LinkedList<Item> Inventory;
+    LinkedList<Item> NameSort;
+    LinkedList<Item> IDSort;
+    LinkedList<Item> ConSort;
+    LinkedList<Item> LocSort;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -63,7 +64,6 @@ public class MainActivity extends AppCompatActivity {
         // Create the adapter that will return a fragment for each of the three
         // primary sections of the activity.
         mSectionsPagerAdapter = new SectionsPagerAdapter(getSupportFragmentManager());
-        eSectionsPagerAdapter = new AddEditAdapter(getSupportFragmentManager());
 
         // Set up the ViewPager with the sections adapter.
         mViewPager = (ViewPager) findViewById(R.id.container);
@@ -122,28 +122,6 @@ public class MainActivity extends AppCompatActivity {
      *  SectionsPagerAdapter
      *
      **************************************/
-
-    /**
-     * A {@link FragmentPagerAdapter} that returns a fragment corresponding to
-     * one of the sections/tabs/pages.
-     */
-    public class AddEditAdapter extends FragmentPagerAdapter {
-
-        public AddEditAdapter(FragmentManager fm) {
-            super(fm);
-        }
-
-        @Override
-        public Fragment getItem(int position) {
-            AddEdit addEdit = new AddEdit();
-            return addEdit;
-        }
-
-        @Override
-        public int getCount() {
-            return 1;
-        }
-    }
 
     /**************************************
      *
