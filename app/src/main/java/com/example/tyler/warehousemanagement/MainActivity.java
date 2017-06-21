@@ -42,7 +42,6 @@ public class MainActivity extends AppCompatActivity {
      * {@link android.support.v4.app.FragmentStatePagerAdapter}.
      */
     private SectionsPagerAdapter mSectionsPagerAdapter;
-    private AddEditAdapter eSectionsPagerAdapter;
 
     /**
      * The {@link ViewPager} that will host the section contents.
@@ -63,8 +62,6 @@ public class MainActivity extends AppCompatActivity {
         // Create the adapter that will return a fragment for each of the three
         // primary sections of the activity.
         mSectionsPagerAdapter = new SectionsPagerAdapter(getSupportFragmentManager());
-        eSectionsPagerAdapter = new AddEditAdapter(getSupportFragmentManager());
-
         // Set up the ViewPager with the sections adapter.
         mViewPager = (ViewPager) findViewById(R.id.container);
         mViewPager.setAdapter(mSectionsPagerAdapter);
@@ -123,27 +120,6 @@ public class MainActivity extends AppCompatActivity {
      *
      **************************************/
 
-    /**
-     * A {@link FragmentPagerAdapter} that returns a fragment corresponding to
-     * one of the sections/tabs/pages.
-     */
-    public class AddEditAdapter extends FragmentPagerAdapter {
-
-        public AddEditAdapter(FragmentManager fm) {
-            super(fm);
-        }
-
-        @Override
-        public Fragment getItem(int position) {
-            AddEdit addEdit = new AddEdit();
-            return addEdit;
-        }
-
-        @Override
-        public int getCount() {
-            return 1;
-        }
-    }
 
     /**************************************
      *
