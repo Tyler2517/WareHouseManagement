@@ -19,6 +19,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 import org.junit.Test;
+
+import java.util.LinkedList;
 import java.util.regex.Pattern;
 
 import android.os.Bundle;
@@ -42,15 +44,15 @@ public class MainActivity extends AppCompatActivity {
      * {@link android.support.v4.app.FragmentStatePagerAdapter}.
      */
     private SectionsPagerAdapter mSectionsPagerAdapter;
-
     /**
      * The {@link ViewPager} that will host the section contents.
      */
     private ViewPager mViewPager;
-    private ViewPager eViewPager;
-
-
-
+    LinkedList<Item> Inventory;
+    LinkedList<Item> NameSort;
+    LinkedList<Item> IDSort;
+    LinkedList<Item> ConSort;
+    LinkedList<Item> LocSort;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -62,6 +64,7 @@ public class MainActivity extends AppCompatActivity {
         // Create the adapter that will return a fragment for each of the three
         // primary sections of the activity.
         mSectionsPagerAdapter = new SectionsPagerAdapter(getSupportFragmentManager());
+
         // Set up the ViewPager with the sections adapter.
         mViewPager = (ViewPager) findViewById(R.id.container);
         mViewPager.setAdapter(mSectionsPagerAdapter);
@@ -120,7 +123,6 @@ public class MainActivity extends AppCompatActivity {
      *
      **************************************/
 
-
     /**************************************
      *
      *  SectionsPagerAdapter
@@ -156,6 +158,9 @@ public class MainActivity extends AppCompatActivity {
                 case 4:
                     Tab5 tab5 = new Tab5();
                     return tab5;
+                case 5:
+                    Tab6 tab6 = new Tab6();
+                    return tab6;
                 default:
                     return null;
             }
@@ -164,7 +169,7 @@ public class MainActivity extends AppCompatActivity {
         @Override
         public int getCount() {
             // Show 5 total pages.
-            return 5;
+            return 6;
         }
 
         @Override
@@ -180,6 +185,8 @@ public class MainActivity extends AppCompatActivity {
                     return "Sort3";
                 case 4:
                     return "Sort4";
+                case 5:
+                    return "ItemPage";
             }
             return null;
         }
