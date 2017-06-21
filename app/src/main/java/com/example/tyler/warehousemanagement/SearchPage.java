@@ -5,8 +5,11 @@ import android.app.SearchManager;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 
 public class SearchPage extends ListActivity {
+
+    public static final String tag = "inside search";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -22,6 +25,8 @@ public class SearchPage extends ListActivity {
     }
 
     private void doSearch(String query) {
+        Log.i(tag, "Entering doSearch()");
+
         //to be implemented later
     }
 }
