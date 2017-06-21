@@ -158,9 +158,6 @@ public class MainActivity extends AppCompatActivity {
                 case 4:
                     Tab5 tab5 = new Tab5();
                     return tab5;
-                case 5:
-                    Tab6 tab6 = new Tab6();
-                    return tab6;
                 default:
                     return null;
             }
