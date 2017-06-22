@@ -1,6 +1,8 @@
 package com.example.tyler.warehousemanagement;
 
 import android.app.DialogFragment;
+import android.content.Context;
+import android.content.res.AssetManager;
 import android.support.design.widget.TabLayout;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -20,6 +22,10 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 import org.junit.Test;
 
+import java.io.BufferedReader;
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.io.InputStreamReader;
 import java.util.LinkedList;
 import java.util.regex.Pattern;
 
@@ -28,6 +34,8 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
+
 /**************************************
  *
  *  MAIN ACTIVITY
@@ -53,6 +61,7 @@ public class MainActivity extends AppCompatActivity {
     LinkedList<Item> IDSort;
     LinkedList<Item> ConSort;
     LinkedList<Item> LocSort;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -73,6 +82,11 @@ public class MainActivity extends AppCompatActivity {
         TabLayout tabLayout = (TabLayout) findViewById(R.id.tabs);
         tabLayout.setupWithViewPager(mViewPager);
 
+        try {
+            read(MainActivity.this, "Data.txt");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
 
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
@@ -84,6 +98,8 @@ public class MainActivity extends AppCompatActivity {
                 newFragment.show(getFragmentManager(), "dialog");
             }
         });
+
+
     }
 
     /**************************************
@@ -116,12 +132,19 @@ public class MainActivity extends AppCompatActivity {
 
         return super.onOptionsItemSelected(item);
     }
+        /*READ FILE*/
+    public String read(Context context, String File) throws IOException{
+        BufferedReader reader = new BufferedReader(new InputStreamReader(context.getAssets().open(File)));
+        StringBuilder sb = new StringBuilder();
+        String mLine = reader.readLine();
+        while (mLine != null) {
+            sb.append(mLine);
+            mLine = reader.readLine();
+        }
+        reader.close();
+        return sb.toString();
+    }
 
-    /**************************************
-     *
-     *  SectionsPagerAdapter
-     *
-     **************************************/
 
     /**************************************
      *
