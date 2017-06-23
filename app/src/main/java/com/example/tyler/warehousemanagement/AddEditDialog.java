@@ -47,10 +47,6 @@ public class AddEditDialog extends DialogFragment {
 
         });
 
-        ReadWrite item = new ReadWrite();
-        EditText editName = (EditText) v.findViewById(R.id.editName);
-
-        editName.setText(item.getItem(this.getContext()));
 
         Button remove = (Button) v.findViewById(R.id.editRemove);
 
