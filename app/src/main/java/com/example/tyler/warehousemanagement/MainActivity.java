@@ -239,35 +239,29 @@ public class MainActivity extends AppCompatActivity {
             public int size() {
                 return 0;
             }
-
             @Override
             public boolean isEmpty() {
                 return false;
             }
-
             @Override
             public boolean contains(Object o) {
                 return false;
             }
-
             @NonNull
             @Override
             public Iterator<Item> iterator() {
                 return null;
             }
-
             @NonNull
             @Override
             public Object[] toArray() {
                 return new Object[0];
             }
-
             @NonNull
             @Override
             public <T> T[] toArray(@NonNull T[] a) {
                 return null;
             }
-
             @Override
             public boolean add(Item item) {
                 return false;
@@ -277,17 +271,14 @@ public class MainActivity extends AppCompatActivity {
             public boolean remove(Object o) {
                 return false;
             }
-
             @Override
             public boolean containsAll(@NonNull Collection<?> c) {
                 return false;
             }
-
             @Override
             public boolean addAll(@NonNull Collection<? extends Item> c) {
                 return false;
             }
-
             @Override
             public boolean addAll(int index, @NonNull Collection<? extends Item> c) {
                 return false;
