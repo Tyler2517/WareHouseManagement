@@ -166,7 +166,7 @@ public class MainActivity extends AppCompatActivity {
         @Override
         public int getCount() {
             // Show 5 total pages.
-            return 5;
+            return 6;
         }
 
         @Override
@@ -182,7 +182,8 @@ public class MainActivity extends AppCompatActivity {
                     return "Sort3";
                 case 4:
                     return "Sort4";
-
+                case 5:
+                    return "ItemPage";
             }
             return null;
         }

@@ -18,22 +18,24 @@ public class ReadWrite {
     Gson gson = new Gson();
 
     public String getItem(Context context) {
-            try
-
-            {
+        try
+        {
                 InputStream inputreader = context.getAssets().open("Data.txt");
                 BufferedReader buffreader = new BufferedReader(new InputStreamReader(inputreader));
 
                 // your code here
                 String line = new String();
                 ArrayList<String> lines = new ArrayList<String>();
+                StringBuilder sb = new StringBuilder();
+
                 while ((line = buffreader.readLine()) != null) {
-                    lines.add(line);
+                    sb.append(line);
                 }
+                line.equals(sb);
                 return line;
             }
             catch (IOException e) {
-                return null;
+                return "Failed";
             }
         }
     }
