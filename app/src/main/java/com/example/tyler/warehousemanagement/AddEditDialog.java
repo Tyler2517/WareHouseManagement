@@ -8,6 +8,7 @@ import android.app.DialogFragment;
 import android.os.Bundle;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.EditText;
 
 /**
  * Created by Owner on 6/14/2017.
@@ -42,7 +43,10 @@ public class AddEditDialog extends DialogFragment {
             public void onClick(View v) {
                 dismiss();
             }
+
+
         });
+
 
         Button remove = (Button) v.findViewById(R.id.editRemove);
 
