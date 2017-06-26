@@ -12,6 +12,7 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -53,6 +54,7 @@ public class MainActivity extends AppCompatActivity {
     LinkedList<Item> IDSort;
     LinkedList<Item> ConSort;
     LinkedList<Item> LocSort;
+    public static final String tag = "in mainActivity"; // for logging purposes
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -112,6 +114,9 @@ public class MainActivity extends AppCompatActivity {
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_settings) {
             return true;
+        } else if (id == R.id.app_bar_search) {
+            Log.i(tag, "Entered app_bar_search option");
+            //get search dialog to show up here
         }
 
         return super.onOptionsItemSelected(item);
@@ -158,9 +163,9 @@ public class MainActivity extends AppCompatActivity {
                 case 4:
                     Tab5 tab5 = new Tab5();
                     return tab5;
-                case 5:
-                    Tab6 tab6 = new Tab6();
-                    return tab6;
+               // case 5:
+                    //Tab6 tab6 = new Tab6();
+                    //return tab6;
                 default:
                     return null;
             }
