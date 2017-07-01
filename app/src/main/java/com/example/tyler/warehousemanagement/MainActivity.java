@@ -331,7 +331,7 @@ public class MainActivity extends AppCompatActivity {
         try {
             JSONObject object = new JSONObject(item);
             JSONArray inventory = object.getJSONArray("Warehouse");
-            for (int i = 0; i < inventory.length(); i++) {
+            for (int i = 0; i < inventory.length() - 1; i++) {
                 Item temp = new Item();
                 JSONObject jsonInventory = inventory.getJSONObject(i);
                 temp.Name = jsonInventory.getString("Name");
