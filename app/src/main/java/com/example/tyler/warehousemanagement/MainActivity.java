@@ -175,16 +175,16 @@ public class MainActivity extends AppCompatActivity {
                     return homeTab;
 
                 case 1:
-                    NameTab nameTab = new NameTab();
+                    NameTab nameTab = new NameTab(Data);
                     return nameTab;
                 case 2:
-                    IDTab IDTab = new IDTab();
-                    return IDTab;
+                    IDTab IdTab = new IDTab(Data);
+                    return IdTab;
                 case 3:
-                    LocTab locTab = new LocTab();
+                    LocTab locTab = new LocTab(Data);
                     return locTab;
                 case 4:
-                    CondTab tab5 = new CondTab();
+                    CondTab tab5 = new CondTab(Data);
                     return tab5;
                 default:
                     return null;
