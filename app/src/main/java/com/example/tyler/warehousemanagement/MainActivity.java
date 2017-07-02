@@ -14,7 +14,6 @@
         import android.support.v4.app.FragmentPagerAdapter;
         import android.support.v4.view.ViewPager;
         import android.os.Bundle;
-        import android.util.Log;
         import android.view.Menu;
         import android.view.MenuItem;
         import android.view.View;
@@ -26,6 +25,7 @@
         import java.io.BufferedReader;
         import java.io.IOException;
         import java.io.InputStreamReader;
+        import java.util.ArrayList;
         import java.util.Collection;
         import java.util.Iterator;
         import java.util.List;
@@ -34,7 +34,8 @@
         import android.widget.ArrayAdapter;
         import android.widget.ListView;
         import android.widget.Toast;
-        import android.widget.Adapter;
+
+        import com.google.gson.Gson;
 
         import static com.example.tyler.warehousemanagement.R.layout.tab1;
 
@@ -58,43 +59,39 @@ public class MainActivity extends AppCompatActivity {
      * The {@link ViewPager} that will host the section contents.
      */
     private ViewPager mViewPager;
-    List<Item> Inventory;
-    List<Item> NameSort;
-    List<Item> IDSort;
-    List<Item> ConSort;
-    List<Item> LocSort;
+    List<Item> Inventory = new ArrayList<>();
     String [] data = {""};
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        //read in data
+        try {
+            data[0] = read(MainActivity.this, "Data.txt");
+            //testing only
+            String normal = data[0];
+            Inventory = JSONConv(normal);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
         //toolbar
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         // Create the tabs
-        mSectionsPagerAdapter = new SectionsPagerAdapter(getSupportFragmentManager());
+        mSectionsPagerAdapter = new SectionsPagerAdapter(getSupportFragmentManager(), Inventory);
         // Set up the ViewPager with the sections adapter.
         mViewPager = (ViewPager) findViewById(R.id.container);
         mViewPager.setAdapter(mSectionsPagerAdapter);
         //tabs
         TabLayout tabLayout = (TabLayout) findViewById(R.id.tabs);
         tabLayout.setupWithViewPager(mViewPager);
-        //read in data
-        try {
-            data[0] = read(MainActivity.this, "Data.txt");
-            //testing only
-            String normal = data[0];
-            Toast.makeText(getApplicationContext(), normal, Toast.LENGTH_LONG).show();
-            Inventory = JSONConv(normal);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
         //List view fun
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, tab1, data);
-        ListView lv = (ListView)findViewById(R.id.ListViewTab1);
-        lv.setAdapter(adapter);
+        ListView lv = (ListView) findViewById(R.id.ListViewTab1);
+        //lv.setAdapter(adapter);
 
         //floating action button
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
@@ -171,15 +168,16 @@ public class MainActivity extends AppCompatActivity {
      */
     public class SectionsPagerAdapter extends FragmentPagerAdapter {
 
-        public SectionsPagerAdapter(FragmentManager fm) {
-            super(fm);
+        List<Item> Data;
+        public SectionsPagerAdapter(FragmentManager fm, List<Item> incData) {
+            super(fm); Data = incData;
         }
 
         @Override
         public Fragment getItem(int position){
             switch(position){
                 case 0:
-                    Tab1 tab1 = new Tab1();
+                    Tab1 tab1 = new Tab1(Data);
                     return tab1;
 
                 case 1:
@@ -228,122 +226,11 @@ public class MainActivity extends AppCompatActivity {
      *
      **************************************/
     public List<Item> JSONConv(String item){
-        List<Item> Inventory= new List<Item>() {
-            @Override
-            public int size() {
-                return 0;
-            }
-            @Override
-            public boolean isEmpty() {
-                return false;
-            }
-            @Override
-            public boolean contains(Object o) {
-                return false;
-            }
-            @NonNull
-            @Override
-            public Iterator<Item> iterator() {
-                return null;
-            }
-            @NonNull
-            @Override
-            public Object[] toArray() {
-                return new Object[0];
-            }
-            @NonNull
-            @Override
-            public <T> T[] toArray(@NonNull T[] a) {
-                return null;
-            }
-            @Override
-            public boolean add(Item item) {
-                return false;
-            }
-
-            @Override
-            public boolean remove(Object o) {
-                return false;
-            }
-            @Override
-            public boolean containsAll(@NonNull Collection<?> c) {
-                return false;
-            }
-            @Override
-            public boolean addAll(@NonNull Collection<? extends Item> c) {
-                return false;
-            }
-            @Override
-            public boolean addAll(int index, @NonNull Collection<? extends Item> c) {
-                return false;
-            }
-
-            @Override
-            public boolean removeAll(@NonNull Collection<?> c) {
-                return false;
-            }
-
-            @Override
-            public boolean retainAll(@NonNull Collection<?> c) {
-                return false;
-            }
-
-            @Override
-            public void clear() {
-
-            }
-
-            @Override
-            public Item get(int index) {
-                return null;
-            }
-
-            @Override
-            public Item set(int index, Item element) {
-                return null;
-            }
-
-            @Override
-            public void add(int index, Item element) {
-
-            }
-
-            @Override
-            public Item remove(int index) {
-                return null;
-            }
-
-            @Override
-            public int indexOf(Object o) {
-                return 0;
-            }
-
-            @Override
-            public int lastIndexOf(Object o) {
-                return 0;
-            }
-
-            @Override
-            public ListIterator<Item> listIterator() {
-                return null;
-            }
-
-            @NonNull
-            @Override
-            public ListIterator<Item> listIterator(int index) {
-                return null;
-            }
-
-            @NonNull
-            @Override
-            public List<Item> subList(int fromIndex, int toIndex) {
-                return null;
-            }
-        };
+        List<Item> Inventory = new ArrayList<>();
         try {
             JSONObject object = new JSONObject(item);
             JSONArray inventory = object.getJSONArray("Warehouse");
-            for (int i = 0; i < inventory.length()-1; i++) {
+            for (int i = 0; i < inventory.length(); i++) {
                 Item temp = new Item();
                 JSONObject jsonInventory = inventory.getJSONObject(i);
                 temp.Name = jsonInventory.getString("Name");
@@ -351,10 +238,15 @@ public class MainActivity extends AppCompatActivity {
                 temp.Condition = jsonInventory.getString("Condition");
                 temp.Location = jsonInventory.getString("Location");
                 Inventory.add(i,temp);
+                Toast.makeText(MainActivity.this, Inventory.get(0).Name, Toast.LENGTH_SHORT).show();
             }
+            return Inventory;
         } catch (JSONException e) {
             e.printStackTrace();
             Toast.makeText(MainActivity.this, "Failure to load JSON", Toast.LENGTH_SHORT).show();
+        } catch (NullPointerException e)
+        {
+            Toast.makeText(MainActivity.this, "Failure to load crap", Toast.LENGTH_SHORT).show();
         }
 
         return Inventory;
