@@ -14,9 +14,9 @@ import android.widget.ListView;
 
 import java.util.List;
 
-public class Tab1 extends Fragment {
+public class HomeTab extends Fragment {
     List<Item> Data;
-    public Tab1(List<Item> incData){
+    public HomeTab(List<Item> incData){
         Data = incData;
     }
     public View onCreateView(LayoutInflater inflater, ViewGroup container,

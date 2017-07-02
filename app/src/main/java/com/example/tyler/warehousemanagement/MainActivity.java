@@ -3,7 +3,6 @@
 
         import android.app.DialogFragment;
         import android.content.Context;
-        import android.support.annotation.NonNull;
         import android.support.design.widget.TabLayout;
         import android.support.design.widget.FloatingActionButton;
         import android.support.v7.app.AppCompatActivity;
@@ -26,16 +25,11 @@
         import java.io.IOException;
         import java.io.InputStreamReader;
         import java.util.ArrayList;
-        import java.util.Collection;
-        import java.util.Iterator;
         import java.util.List;
-        import java.util.ListIterator;
 
         import android.widget.ArrayAdapter;
         import android.widget.ListView;
         import android.widget.Toast;
-
-        import com.google.gson.Gson;
 
         import static com.example.tyler.warehousemanagement.R.layout.tab1;
 
@@ -177,20 +171,20 @@ public class MainActivity extends AppCompatActivity {
         public Fragment getItem(int position){
             switch(position){
                 case 0:
-                    Tab1 tab1 = new Tab1(Data);
-                    return tab1;
+                    HomeTab homeTab = new HomeTab(Data);
+                    return homeTab;
 
                 case 1:
-                    Tab2 tab2 = new Tab2();
-                    return tab2;
+                    NameTab nameTab = new NameTab();
+                    return nameTab;
                 case 2:
-                    Tab3 tab3 = new Tab3();
-                    return tab3;
+                    IDTab IDTab = new IDTab();
+                    return IDTab;
                 case 3:
-                    Tab4 tab4 = new Tab4();
-                    return tab4;
+                    LocTab locTab = new LocTab();
+                    return locTab;
                 case 4:
-                    Tab5 tab5 = new Tab5();
+                    CondTab tab5 = new CondTab();
                     return tab5;
                 default:
                     return null;
@@ -208,13 +202,13 @@ public class MainActivity extends AppCompatActivity {
                 case 0:
                     return "Home";
                 case 1:
-                    return "Sort1";
+                    return "Name";
                 case 2:
-                    return "Sort2";
+                    return "Id";
                 case 3:
-                    return "Sort3";
+                    return "Loc";
                 case 4:
-                    return "Sort4";
+                    return "Cond";
             }
             return null;
         }

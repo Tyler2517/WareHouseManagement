@@ -10,10 +10,10 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-public class Tab4 extends Fragment {
+public class NameTab extends Fragment {
 
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View rootView = inflater.inflate(R.layout.tab4, container, false);
+        View rootView = inflater.inflate(R.layout.tab2, container, false);
         return rootView;
     }}
