@@ -1,11 +1,13 @@
 package com.example.tyler.warehousemanagement;
 
         import android.app.DialogFragment;
+        import android.app.SearchManager;
         import android.content.Context;
         import android.content.Intent;
         import android.support.design.widget.TabLayout;
         import android.support.design.widget.FloatingActionButton;
         import android.support.v7.app.AppCompatActivity;
+        import android.support.v7.widget.SearchView;
         import android.support.v7.widget.Toolbar;
 import android.content.Intent;
 import android.support.design.widget.TabLayout;
@@ -113,7 +115,6 @@ public class MainActivity extends AppCompatActivity {
                 newFragment.show(getFragmentManager(), "dialog");
             }
         });
-
 
     }
 
