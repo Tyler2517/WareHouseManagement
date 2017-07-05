@@ -11,6 +11,6 @@
           "ID": "M2514",
           "Condition": "Good",
           "Location" : "Shop"
-        },
+        }
       ]
 }
