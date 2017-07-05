@@ -14,6 +14,7 @@
         import android.support.v4.app.FragmentPagerAdapter;
         import android.support.v4.view.ViewPager;
         import android.os.Bundle;
+        import android.util.Log;
         import android.view.Menu;
         import android.view.MenuItem;
         import android.view.View;
@@ -29,9 +30,15 @@
         import java.util.Iterator;
         import java.util.List;
         import java.util.ListIterator;
-        import android.widget.Toast;
 
-/**************************************
+        import android.widget.ArrayAdapter;
+        import android.widget.ListView;
+        import android.widget.Toast;
+        import android.widget.Adapter;
+
+        import static com.example.tyler.warehousemanagement.R.layout.tab1;
+
+        /**************************************
  *
  *  MAIN ACTIVITY
  *
@@ -57,6 +64,8 @@ public class MainActivity extends AppCompatActivity {
     List<Item> ConSort;
     List<Item> LocSort;
     String [] data = {""};
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -83,6 +92,9 @@ public class MainActivity extends AppCompatActivity {
             e.printStackTrace();
         }
         //List view fun
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, tab1, data);
+        ListView lv = (ListView)findViewById(R.id.ListViewTab1);
+        lv.setAdapter(adapter);
 
         //floating action button
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
@@ -331,7 +343,7 @@ public class MainActivity extends AppCompatActivity {
         try {
             JSONObject object = new JSONObject(item);
             JSONArray inventory = object.getJSONArray("Warehouse");
-            for (int i = 0; i < inventory.length() - 1; i++) {
+            for (int i = 0; i < inventory.length()-1; i++) {
                 Item temp = new Item();
                 JSONObject jsonInventory = inventory.getJSONObject(i);
                 temp.Name = jsonInventory.getString("Name");
