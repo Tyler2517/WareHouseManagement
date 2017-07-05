@@ -1,5 +1,12 @@
 {
       "Warehouse" : [
+
+        {
+          "Name": "Viking Pump",
+          "ID": "V2314",
+          "Condition": "Needs Repair",
+          "Location" : "IP Savannah"
+        },
         {
           "Name": "Deisel Motor",
           "ID": "M2513",
