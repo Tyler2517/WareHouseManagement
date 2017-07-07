@@ -26,7 +26,7 @@ public class HomeTab extends Fragment {
 
         String[] Practice = new String[Data.size()];
         for(int i = 0; i < Data.size();i++) {
-            Practice[i] = Data.get(i).Name + " - " + Data.get(i).Name + " - " + Data.get(i).ID + " - " + Data.get(i).Location + " - " + Data.get(i).Condition;
+            Practice[i] = Data.get(i).Name + " - " + Data.get(i).ID + " - " + Data.get(i).Location + " - " + Data.get(i).Condition;
         }
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(getActivity().getApplicationContext(), android.R.layout.simple_list_item_1, Practice);
         ListView list = (ListView) rootView.findViewById(R.id.ListViewTab1);

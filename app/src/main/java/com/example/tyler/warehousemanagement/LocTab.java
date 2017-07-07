@@ -12,21 +12,35 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 
 public class LocTab extends Fragment {
     List<Item> Data;
-    public LocTab(List<Item> incData){
-        Data = incData;
+    List<Item> LocData;
+
+    public LocTab(List<Item> incLocData){
+        Data = incLocData;
+        LocData = new ArrayList<>(Data);
     }
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-
         View rootView = inflater.inflate(R.layout.tab1, container, false);
 
-        String[] Practice = new String[Data.size()];
-        for(int i = 0; i < Data.size();i++) {
-            Practice[i] = Data.get(i).Name + " - " + Data.get(i).Name + " - " + Data.get(i).ID + " - " + Data.get(i).Location + " - " + Data.get(i).Condition;
+        // Sorting
+        Collections.sort(LocData, new Comparator<Item>() {
+            @Override
+            public int compare(Item item2, Item item1)
+            {
+
+                return  item2.Location.compareTo(item1.Location);
+            }
+        });
+        String[] Practice = new String[LocData.size()];
+        for(int i = 0; i < LocData.size();i++) {
+            Practice[i] = LocData.get(i).Name + " - " + LocData.get(i).ID + " - " + LocData.get(i).Location + " - " + LocData.get(i).Condition;
         }
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(getActivity().getApplicationContext(), android.R.layout.simple_list_item_1, Practice);
         ListView list = (ListView) rootView.findViewById(R.id.ListViewTab1);
