@@ -2,6 +2,7 @@ package com.example.tyler.warehousemanagement;
 
         import android.app.DialogFragment;
         import android.app.SearchManager;
+        import android.content.ComponentName;
         import android.content.Context;
         import android.content.Intent;
         import android.support.design.widget.TabLayout;
@@ -127,6 +128,12 @@ public class MainActivity extends AppCompatActivity {
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.menu_main, menu);
+
+        // Get searchView and set search configuration
+        //SearchManager searchManager = (SearchManager) getSystemService(Context.SEARCH_SERVICE);
+        //SearchView searchView = (SearchView) menu.findItem(R.id.search_bar);
+        //searchView.setSearchableInfo(searchManager.getSearchableInfo(
+        //        new ComponentName(getApplicationContext(), SearchPage.class)));
         return true;
     }
     /**************************************
