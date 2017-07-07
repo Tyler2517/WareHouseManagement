@@ -25,8 +25,6 @@ public class SearchPage extends ListActivity {
     }
 
     private void doSearch(String query) {
-        Log.i(tag, "Entering doSearch()");
 
-        //to be implemented later
     }
 }
