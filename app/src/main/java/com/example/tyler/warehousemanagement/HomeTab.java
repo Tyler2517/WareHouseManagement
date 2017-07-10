@@ -4,11 +4,14 @@ package com.example.tyler.warehousemanagement;
  * Created by Tyler on 6/5/2017.
  */
 
+import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
@@ -32,6 +35,13 @@ public class HomeTab extends Fragment {
         ListView list = (ListView) rootView.findViewById(R.id.ListViewTab1);
         list.setAdapter(adapter);
         return rootView;
+        list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapter, View rootView, int position, long id) {
+                Intent appInfo = new Intent(AddEditDialog.this);
+                startActivity(appInfo);
+            }
+        });
     }
     private void populateListView() {
     }

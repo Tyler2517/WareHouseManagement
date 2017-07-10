@@ -3,6 +3,7 @@
 
         import android.app.DialogFragment;
         import android.content.Context;
+        import android.content.Intent;
         import android.support.design.widget.TabLayout;
         import android.support.design.widget.FloatingActionButton;
         import android.support.v7.app.AppCompatActivity;
@@ -27,6 +28,7 @@
         import java.util.ArrayList;
         import java.util.List;
 
+        import android.widget.AdapterView;
         import android.widget.ArrayAdapter;
         import android.widget.ListView;
         import android.widget.Toast;
