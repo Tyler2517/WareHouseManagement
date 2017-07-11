@@ -5,6 +5,7 @@
         import android.app.SearchManager;
         import android.content.ComponentName;
         import android.content.Context;
+        import android.content.Intent;
         import android.support.design.widget.TabLayout;
         import android.support.design.widget.FloatingActionButton;
         import android.support.v4.view.MenuCompat;
@@ -31,6 +32,7 @@
         import java.util.ArrayList;
         import java.util.List;
 
+        import android.widget.AdapterView;
         import android.widget.ArrayAdapter;
         import android.widget.ListView;
         import android.widget.Toast;
