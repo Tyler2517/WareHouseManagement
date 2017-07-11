@@ -7,8 +7,9 @@ package com.example.tyler.warehousemanagement;
         import android.content.Intent;
         import android.support.design.widget.TabLayout;
         import android.support.design.widget.FloatingActionButton;
+        import android.support.v4.view.MenuCompat;
+        import android.support.v4.view.MenuItemCompat;
         import android.support.v7.app.AppCompatActivity;
-        import android.support.v7.widget.SearchView;
         import android.support.v7.widget.Toolbar;
 import android.content.Intent;
 import android.support.design.widget.TabLayout;
@@ -39,6 +40,11 @@ import android.support.v7.widget.Toolbar;
         import android.widget.ArrayAdapter;
         import android.widget.ListView;
         import android.widget.Toast;
+
+        import android.app.SearchManager;
+        import android.widget.SearchView;
+        import android.widget.SearchView.OnQueryTextListener;
+
 
         import static com.example.tyler.warehousemanagement.R.layout.tab1;
 
@@ -130,10 +136,11 @@ public class MainActivity extends AppCompatActivity {
         getMenuInflater().inflate(R.menu.menu_main, menu);
 
         // Get searchView and set search configuration
-        //SearchManager searchManager = (SearchManager) getSystemService(Context.SEARCH_SERVICE);
-        //SearchView searchView = (SearchView) menu.findItem(R.id.search_bar);
-        //searchView.setSearchableInfo(searchManager.getSearchableInfo(
-        //        new ComponentName(getApplicationContext(), SearchPage.class)));
+        SearchManager searchManager = (SearchManager) getSystemService(Context.SEARCH_SERVICE);
+        MenuItem menuItem = menu.findItem(R.id.action_search);
+        SearchView searchView = (SearchView) MenuItemCompat.getActionView(menuItem);
+        ComponentName componentName = new ComponentName(this, SearchPage.class);
+        searchView.setSearchableInfo(searchManager.getSearchableInfo(componentName));
         return true;
     }
     /**************************************
