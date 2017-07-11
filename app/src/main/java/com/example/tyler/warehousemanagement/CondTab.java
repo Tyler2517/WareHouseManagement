@@ -45,8 +45,7 @@ public class CondTab extends Fragment {
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(getActivity().getApplicationContext(), android.R.layout.simple_list_item_1, Practice);
         ListView list = (ListView) rootView.findViewById(R.id.ListViewTab1);
         list.setAdapter(adapter);
+
         return rootView;
-    }
-    private void populateListView() {
     }
 }
