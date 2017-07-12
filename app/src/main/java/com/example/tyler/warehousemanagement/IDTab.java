@@ -4,13 +4,16 @@ package com.example.tyler.warehousemanagement;
  * Created by Tyler on 6/5/2017.
  */
 
+import android.app.DialogFragment;
 import android.support.v4.app.Fragment;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -45,6 +48,27 @@ public class IDTab extends Fragment {
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(getActivity().getApplicationContext(), android.R.layout.simple_list_item_1, Practice);
         ListView list = (ListView) rootView.findViewById(R.id.ListViewTab1);
         list.setAdapter(adapter);
+        //
+        list.setOnItemClickListener(new AdapterView.OnItemClickListener()
+        {
+            @Override
+            public void onItemClick(AdapterView<?> adapter, View v, int position,
+                                    long arg3)
+            {
+                // assuming string and if you want to get the value on click of list item
+                // do what you intend to do on click of listview row
+                Toast.makeText(getActivity(), "SUCCESS" + position, Toast.LENGTH_SHORT).show();
+
+                DialogFragment newFragment = AddEditDialog.newInstance(v.getId());
+                newFragment.setShowsDialog(true);
+                newFragment.show(getActivity().getFragmentManager(),"Dialogue");
+            }
+        });
+
+
+        //
+
+
         return rootView;
     }
     private void populateListView() {
