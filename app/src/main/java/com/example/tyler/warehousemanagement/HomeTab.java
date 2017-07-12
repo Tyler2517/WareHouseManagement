@@ -28,20 +28,13 @@ public class HomeTab extends Fragment {
         View rootView = inflater.inflate(R.layout.tab1, container, false);
 
         String[] Practice = new String[Data.size()];
-        for(int i = 0; i < Data.size();i++) {
+        for (int i = 0; i < Data.size(); i++) {
             Practice[i] = Data.get(i).Name + " - " + Data.get(i).ID + " - " + Data.get(i).Location + " - " + Data.get(i).Condition;
         }
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(getActivity().getApplicationContext(), android.R.layout.simple_list_item_1, Practice);
         ListView list = (ListView) rootView.findViewById(R.id.ListViewTab1);
         list.setAdapter(adapter);
         return rootView;
-        list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> adapter, View rootView, int position, long id) {
-                Intent appInfo = new Intent(AddEditDialog.this);
-                startActivity(appInfo);
-            }
-        });
     }
     private void populateListView() {
     }
