@@ -7,4 +7,5 @@
     <string name="search_display">Placeholder text</string>
     <string name="search_activate">Search</string>
     <string name = "action_search">Press to search</string>
+    <string name="preferences_file">com.example.tyler.warehousemanagement.PREFERENCES</string>
 </resources>
