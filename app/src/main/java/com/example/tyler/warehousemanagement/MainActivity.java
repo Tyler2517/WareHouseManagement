@@ -6,6 +6,7 @@
         import android.content.ComponentName;
         import android.content.Context;
         import android.content.Intent;
+        import android.content.SharedPreferences;
         import android.support.design.widget.TabLayout;
         import android.support.design.widget.FloatingActionButton;
         import android.support.v4.view.MenuCompat;
@@ -78,6 +79,11 @@ public class MainActivity extends AppCompatActivity {
             //testing only
             String normal = data[0];
             Inventory = JSONConv(normal);
+            SharedPreferences sharedPreferences = getApplicationContext().getSharedPreferences(
+                    getString(R.string.preferences_file), Context.MODE_PRIVATE);
+            SharedPreferences.Editor editor = sharedPreferences.edit();
+            editor.putString("data", normal);
+            editor.commit();
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -249,7 +255,7 @@ public class MainActivity extends AppCompatActivity {
                 temp.Condition = jsonInventory.getString("Condition");
                 temp.Location = jsonInventory.getString("Location");
                 Inventory.add(i,temp);
-                Toast.makeText(MainActivity.this, Inventory.get(0).Name, Toast.LENGTH_SHORT).show();
+                //Toast.makeText(MainActivity.this, Inventory.get(0).Name, Toast.LENGTH_SHORT).show();
             }
             return Inventory;
         } catch (JSONException e) {
