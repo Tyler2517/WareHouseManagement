@@ -19,7 +19,7 @@
         android:layout_height="wrap_content"
         android:ems="10"
         android:inputType="textPersonName"
-        android:hint="Name" />
+        android:text="Name" />
 
     <EditText
         android:layout_marginTop="25dp"
@@ -28,7 +28,7 @@
         android:layout_height="wrap_content"
         android:ems="10"
         android:inputType="textPersonName"
-        android:hint="ID" />
+        android:text="ID" />
 
     <EditText
         android:layout_marginTop="25dp"
@@ -37,7 +37,7 @@
         android:layout_height="wrap_content"
         android:ems="10"
         android:inputType="textPersonName"
-        android:hint="Location" />
+        android:text="Location" />
 
     <EditText
         android:layout_marginTop="25dp"
@@ -46,7 +46,7 @@
         android:layout_height="wrap_content"
         android:ems="10"
         android:inputType="textPersonName"
-        android:hint="Condition" />
+        android:text="Condition" />
 
     <Button
         android:layout_marginTop="50dp"

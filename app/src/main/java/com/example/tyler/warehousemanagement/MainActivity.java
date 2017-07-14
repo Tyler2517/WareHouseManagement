@@ -234,6 +234,7 @@ public class MainActivity extends AppCompatActivity {
                 temp.Condition = jsonInventory.getString("Condition");
                 temp.Location = jsonInventory.getString("Location");
                 Inventory.add(i,temp);
+                Toast.makeText(MainActivity.this, Inventory.get(0).Name, Toast.LENGTH_SHORT).show();
             }
             return Inventory;
         } catch (JSONException e) {

@@ -49,27 +49,17 @@ public class AddEditDialog extends DialogFragment {
 
 
         Button remove = (Button) v.findViewById(R.id.editRemove);
-        Button confirm = (Button) v.findViewById(R.id.editConfirm);
+
         remove.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
                 DialogFragment newFragment = AddEditDialog.newInstance(view.getId());
-                //newFragment.setShowsDialog(true);
-                //newFragment.show(getFragmentManager(), "dialog");
-                dismiss();
+                newFragment.setShowsDialog(true);
+                newFragment.show(getFragmentManager(), "dialog");
             }
         });
-        confirm.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
 
-                DialogFragment newFragment = AddEditDialog.newInstance(view.getId());
-                //newFragment.setShowsDialog(true);
-                //newFragment.show(getFragmentManager(), "dialog");
-                dismiss();
-            }
-        });
 
         return v;
     }}
