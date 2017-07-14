@@ -57,7 +57,7 @@ public class IDTab extends Fragment {
             {
                 // assuming string and if you want to get the value on click of list item
                 // do what you intend to do on click of listview row
-                Toast.makeText(getActivity(), "SUCCESS" + position, Toast.LENGTH_SHORT).show();
+                //Toast.makeText(getActivity(), "SUCCESS" + position, Toast.LENGTH_SHORT).show();
 
                 DialogFragment newFragment = AddEditDialog.newInstance(v.getId());
                 newFragment.setShowsDialog(true);
