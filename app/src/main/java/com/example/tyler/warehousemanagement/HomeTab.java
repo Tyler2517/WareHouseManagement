@@ -34,14 +34,15 @@ public class HomeTab extends Fragment {
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(getActivity().getApplicationContext(), android.R.layout.simple_list_item_1, Practice);
         ListView list = (ListView) rootView.findViewById(R.id.ListViewTab1);
         list.setAdapter(adapter);
-        return rootView;
+
         list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapter, View rootView, int position, long id) {
-                Intent appInfo = new Intent(AddEditDialog.this);
-                startActivity(appInfo);
+                //Intent appInfo = new Intent(AddEditDialog.this);
+                //startActivity(appInfo);
             }
         });
+        return rootView;
     }
     private void populateListView() {
     }

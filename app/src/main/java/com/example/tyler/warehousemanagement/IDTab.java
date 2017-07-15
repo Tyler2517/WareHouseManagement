@@ -15,6 +15,8 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.Toast;
 
+import com.google.gson.Gson;
+
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
@@ -57,11 +59,16 @@ public class IDTab extends Fragment {
             {
                 // assuming string and if you want to get the value on click of list item
                 // do what you intend to do on click of listview row
-                Toast.makeText(getActivity(), "SUCCESS" + position, Toast.LENGTH_SHORT).show();
 
                 DialogFragment newFragment = AddEditDialog.newInstance(v.getId());
+                Bundle args = new Bundle();
+                args.putInt("Position", position);
+
+                args.putString("Data", new Gson().toJson(IDData.get(position)));
+                newFragment.setArguments(args);
                 newFragment.setShowsDialog(true);
                 newFragment.show(getActivity().getFragmentManager(),"Dialogue");
+
             }
         });
 
