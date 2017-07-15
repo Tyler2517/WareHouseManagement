@@ -1,50 +1,41 @@
-package com.example.tyler.warehousemanagement;
 
-import android.app.DialogFragment;
-import android.app.SearchManager;
-import android.content.ComponentName;
-import android.content.Context;
-import android.content.Intent;
-import android.content.SharedPreferences;
-import android.support.design.widget.TabLayout;
-import android.support.design.widget.FloatingActionButton;
-import android.support.v4.view.MenuCompat;
-import android.support.v4.view.MenuItemCompat;
-import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
+        package com.example.tyler.warehousemanagement;
 
-import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentPagerAdapter;
-import android.support.v4.view.ViewPager;
-import android.os.Bundle;
-import android.view.Menu;
-import android.view.MenuItem;
-import android.view.View;
+        import android.app.DialogFragment;
+        import android.content.Context;
+        import android.content.Intent;
+        import android.support.design.widget.TabLayout;
+        import android.support.design.widget.FloatingActionButton;
+        import android.support.v7.app.AppCompatActivity;
+        import android.support.v7.widget.Toolbar;
 
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
+        import android.support.v4.app.Fragment;
+        import android.support.v4.app.FragmentManager;
+        import android.support.v4.app.FragmentPagerAdapter;
+        import android.support.v4.view.ViewPager;
+        import android.os.Bundle;
+        import android.view.Menu;
+        import android.view.MenuItem;
+        import android.view.View;
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
-import java.util.ArrayList;
-import java.util.List;
+        import org.json.JSONArray;
+        import org.json.JSONException;
+        import org.json.JSONObject;
 
-import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
-import android.widget.ListView;
-import android.widget.Toast;
+        import java.io.BufferedReader;
+        import java.io.IOException;
+        import java.io.InputStreamReader;
+        import java.util.ArrayList;
+        import java.util.List;
 
-import android.app.SearchManager;
-import android.widget.SearchView;
-import android.widget.SearchView.OnQueryTextListener;
+        import android.widget.AdapterView;
+        import android.widget.ArrayAdapter;
+        import android.widget.ListView;
+        import android.widget.Toast;
 
+        import static com.example.tyler.warehousemanagement.R.layout.tab1;
 
-import static com.example.tyler.warehousemanagement.R.layout.tab1;
-
-/**************************************
+        /**************************************
  *
  *  MAIN ACTIVITY
  *
@@ -78,11 +69,6 @@ public class MainActivity extends AppCompatActivity {
             //testing only
             String normal = data[0];
             Inventory = JSONConv(normal);
-            SharedPreferences sharedPreferences = getApplicationContext().getSharedPreferences(
-                    getString(R.string.preferences_file), Context.MODE_PRIVATE);
-            SharedPreferences.Editor editor = sharedPreferences.edit();
-            editor.putString("data", normal);
-            editor.commit();
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -115,6 +101,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+
     }
 
     /**************************************
@@ -126,13 +113,6 @@ public class MainActivity extends AppCompatActivity {
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.menu_main, menu);
-
-        // Get searchView and set search configuration
-        SearchManager searchManager = (SearchManager) getSystemService(Context.SEARCH_SERVICE);
-        MenuItem menuItem = menu.findItem(R.id.action_search);
-        SearchView searchView = (SearchView) MenuItemCompat.getActionView(menuItem);
-        ComponentName componentName = new ComponentName(this, SearchPage.class);
-        searchView.setSearchableInfo(searchManager.getSearchableInfo(componentName));
         return true;
     }
     /**************************************
@@ -254,7 +234,6 @@ public class MainActivity extends AppCompatActivity {
                 temp.Condition = jsonInventory.getString("Condition");
                 temp.Location = jsonInventory.getString("Location");
                 Inventory.add(i,temp);
-                //Toast.makeText(MainActivity.this, Inventory.get(0).Name, Toast.LENGTH_SHORT).show();
             }
             return Inventory;
         } catch (JSONException e) {
