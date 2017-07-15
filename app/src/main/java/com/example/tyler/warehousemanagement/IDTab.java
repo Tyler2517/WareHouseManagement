@@ -57,8 +57,6 @@ public class IDTab extends Fragment {
             public void onItemClick(AdapterView<?> adapter, View v, int position,
                                     long arg3)
             {
-                // assuming string and if you want to get the value on click of list item
-                // do what you intend to do on click of listview row
 
                 DialogFragment newFragment = AddEditDialog.newInstance(v.getId());
                 Bundle args = new Bundle();

@@ -55,6 +55,8 @@ public class AddEditDialog extends DialogFragment {
 
 
         Button remove = (Button) v.findViewById(R.id.editRemove);
+        Button confirm = (Button) v.findViewById(R.id.editConfirm);
+
         TextView editName = (TextView) v.findViewById(R.id.editName);
         editName.setText(Data.Name);
         TextView editID = (TextView) v.findViewById(R.id.editID);
@@ -63,16 +65,27 @@ public class AddEditDialog extends DialogFragment {
         editCond.setText(Data.Condition);
         TextView editLoc = (TextView) v.findViewById(R.id.editLoc);
         editLoc.setText(Data.Location); 
+
         remove.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
                 DialogFragment newFragment = AddEditDialog.newInstance(view.getId());
-                newFragment.setShowsDialog(true);
-                newFragment.show(getFragmentManager(), "dialog");
+                //newFragment.setShowsDialog(true);
+                //newFragment.show(getFragmentManager(), "dialog");
+                dismiss();
             }
         });
+        confirm.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
 
+                DialogFragment newFragment = AddEditDialog.newInstance(view.getId());
+                //newFragment.setShowsDialog(true);
+                //newFragment.show(getFragmentManager(), "dialog");
+                dismiss();
+            }
+        });
 
         return v;
     }}
