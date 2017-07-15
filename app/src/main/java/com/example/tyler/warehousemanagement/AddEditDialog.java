@@ -56,7 +56,7 @@ public class AddEditDialog extends DialogFragment {
 
         Button remove = (Button) v.findViewById(R.id.editRemove);
         TextView editName = (TextView) v.findViewById(R.id.editName);
-        editName.setText(Data.Name);
+        editName.setText(Data.Name); 
         TextView editID = (TextView) v.findViewById(R.id.editID);
         editID.setText(Data.ID);
         TextView editCond = (TextView) v.findViewById(R.id.editCon);
